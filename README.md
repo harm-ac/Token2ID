@@ -54,7 +54,7 @@ SETUP.bat
 ```
 Discord-Bot-Extractor/
 │
-├── bot_extractor.py
+├── main.py
 ├── tokensbot.txt
 ├── requirements.txt
 ├── SETUP.bat
@@ -83,7 +83,7 @@ TOKEN_3
 ### 2. Start the extractor
 
 ```bash
-python bot_extractor.py
+python main.py
 ```
 
 ---

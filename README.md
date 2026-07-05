@@ -17,7 +17,7 @@ Simple • Fast • Lightweight
 ## ✨ Features
 
 - 📄 Read unlimited bot tokens from `tokensbot.txt`
-- 🆔 Decode Bot IDs directly from tokens
+- 🆔 Give you Bot IDs directly from tokens
 - 👤 Fetch bot usernames using the Discord API
 - 💾 Export results as TXT and JSON
 - ⚡ Fast processing
@@ -31,7 +31,7 @@ Simple • Fast • Lightweight
 ### Clone
 
 ```bash
-git clone https://github.com/yourname/discord-bot-extractor.git
+git clone https://github.com/harm-ac/Token2ID.git
 cd discord-bot-extractor
 ```
 

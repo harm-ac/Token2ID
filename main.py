@@ -69,8 +69,9 @@ class DiscordBotExtractor:
                 data = response.json()
                 return {
                     'id': bot_id,
-                    'name': data.get('username', 'Unknown'),
+                    'username': data.get('username', 'Unknown'),
                     'discriminator': data.get('discriminator', '0000'),
+                    'global_name': data.get('global_name', ''),
                     'avatar': data.get('avatar', ''),
                     'bot': data.get('bot', True)
                 }
@@ -83,8 +84,9 @@ class DiscordBotExtractor:
     def get_bot_info_from_token(self, bot_id: str) -> Dict:
         return {
             'id': bot_id,
-            'name': f'Bot_{bot_id[:6]}',
+            'username': f'bot_{bot_id[:6]}',
             'discriminator': '0000',
+            'global_name': '',
             'bot': True,
             'status': 'offline (API error)'
         }
@@ -107,19 +109,19 @@ class DiscordBotExtractor:
                     if use_api:
                         bot_info = self.get_bot_info_from_api(bot_id, token)
                     else:
-                        bot_info = {'id': bot_id, 'name': f'Bot_{bot_id[:6]}'}
+                        bot_info = {'id': bot_id, 'username': f'bot_{bot_id[:6]}'}
                     
-                    bot_name = bot_info.get('name', 'Unknown')
+                    bot_username = bot_info.get('username', 'Unknown')
                     
                     self.bots_data.append({
                         'token': token,
                         'id': bot_id,
-                        'name': bot_name,
+                        'username': bot_username,
                         'full_info': bot_info
                     })
                     
                     print(f"   ID: {bot_id}")
-                    print(f"   Name: {bot_name}")
+                    print(f"   Username: {bot_username}")
                     print(f"   Token: {token[:30]}...")
                     print("-" * 30)
                     
@@ -145,7 +147,7 @@ class DiscordBotExtractor:
         print("=" * 70)
         
         for bot in self.bots_data:
-            print(f"{bot['token']} - {bot['id']} - {bot['name']}")
+            print(f"{bot['token']} - {bot['id']} - {bot['username']}")
         
         print("=" * 70)
         print(f"Total: {len(self.bots_data)} bots")
@@ -159,7 +161,7 @@ class DiscordBotExtractor:
         try:
             with open(output_file, 'w', encoding='utf-8') as f:
                 for bot in self.bots_data:
-                    line = f"{bot['token']}:{bot['id']}:{bot['name']}\n"
+                    line = f"{bot['token']}:{bot['id']}:{bot['username']}\n"
                     f.write(line)
             
             print(f"Saved results to {output_file}")

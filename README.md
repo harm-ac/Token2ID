@@ -32,7 +32,7 @@ Simple • Fast • Lightweight
 
 ```bash
 git clone https://github.com/harm-ac/Token2ID.git
-cd discord-bot-extractor
+cd Token2ID
 ```
 
 ### Install Requirements
